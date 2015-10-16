@@ -225,7 +225,10 @@ class Insightly{
   public function addContact($contact){
     $url_path = "/v2.1/Contacts";
     $request = null;
-
+    if($contact == "sample"){
+      $return = $this->getContacts(array("top" => 1));
+      return $return[0];
+    }
     if(isset($contact->CONTACT_ID) && $contact->CONTACT_ID > 0){
       $request = $this->PUT($url_path);
     }
